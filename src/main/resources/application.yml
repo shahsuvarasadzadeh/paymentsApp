@@ -1,1 +1,15 @@
+server:
+  port: 8088
 
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3307/shahsuvar
+    username: shahsuvar
+    password: shahsuvar1999
+  jpa:
+    show-sql: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update
