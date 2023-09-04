@@ -20,7 +20,7 @@ public class FileDbImpl implements FileDbService {
     public FileDb store(MultipartFile file) throws IOException {
         String fileName = file.getOriginalFilename();
         FileDb fileDb = new FileDb(fileName, file.getContentType(),
-                Arrays.toString(file.getBytes()));
+                file.getBytes());
         return fileDBRepository.save(fileDb);
     }
 

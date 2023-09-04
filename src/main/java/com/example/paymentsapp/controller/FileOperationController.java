@@ -9,27 +9,27 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/test")
-public class Testing {
+@RequestMapping(path = "/file")
+public class FileOperationController {
     private final FileDbService fileDbService;
 
-    public Testing(FileDbService fileDbService) {
+    public FileOperationController(FileDbService fileDbService) {
         this.fileDbService = fileDbService;
     }
 
-    @PostMapping(path = "/fileUpload")
+    @PostMapping(path = "/upload")
     private FileDb uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
         System.out.println(file.getContentType());
         System.out.println(file.getName());
         System.out.println(file.getOriginalFilename());
-        System.out.println(Arrays.toString(file.getBytes()));
+        System.out.println(file.getBytes());
         return fileDbService.store(file);
     }
-    @GetMapping(path = "getFile/{id}")
+    @GetMapping(path = "get/{id}")
     public FileDb getFile(@PathVariable Long id){
         return fileDbService.getFileById(id);
     }
-    @GetMapping(path = "getAllFile")
+    @GetMapping(path = "getAll")
     public List<FileDb> getAllFile(){
         return fileDbService.getFileList();
     }

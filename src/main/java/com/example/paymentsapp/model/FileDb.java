@@ -12,8 +12,8 @@ public class FileDb {
     private Long id;
     private String name;
     private String type;
-    private String data;
-    public FileDb(String name, String type, String data) {
+    private byte[] data;
+    public FileDb(String name, String type, byte[] data) {
         this.name = name;
         this.type = type;
         this.data = data;
