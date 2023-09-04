@@ -1,5 +1,6 @@
 package com.example.paymentsapp.service;
 
+import com.example.paymentsapp.exceptions.NotFoundException;
 import com.example.paymentsapp.model.FileDb;
 import com.example.paymentsapp.repository.FileDBRepository;
 import org.springframework.stereotype.Service;
@@ -26,15 +27,11 @@ public class FileDbImpl implements FileDbService {
 
     @Override
     public FileDb getFileById(Long id) {
-        Optional<FileDb> fileDbOptional=fileDBRepository.findById(id);
-        if(fileDbOptional.isPresent()){
-            return fileDbOptional.get();
-        }
-        return null;
+        return fileDBRepository.findById(id).orElseThrow(()
+                -> new NotFoundException("Not Found image"));
     }
     @Override
     public List<FileDb> getFileList() {
         return fileDBRepository.findAll();
     }
-
 }
