@@ -1,9 +1,11 @@
 package com.example.paymentsapp.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
-@Table(name = "pls")
+@Table(name = "test1")
+@Data
 public class FileDb {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,6 +15,8 @@ public class FileDb {
     @Lob
     @Column(name = "data", columnDefinition = "LONGBLOB") // butun problem bu balacadaymis
     private byte[] data;
+    @OneToOne(mappedBy = "image",cascade = CascadeType.ALL)
+    private FeesDb fee;
     public FileDb() {
     }
     public FileDb(String name, String type, byte[] data) {
@@ -40,5 +44,13 @@ public class FileDb {
     }
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public FeesDb getFee() {
+        return fee;
+    }
+
+    public void setFee(FeesDb fee) {
+        this.fee = fee;
     }
 }
