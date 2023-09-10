@@ -4,6 +4,7 @@ import com.example.paymentsapp.dto.CreateDto;
 import com.example.paymentsapp.dto.UpdateDTO;
 import com.example.paymentsapp.exceptions.NotFoundException;
 import com.example.paymentsapp.model.StudentModel;
+import com.example.paymentsapp.repository.CourseRepository;
 import com.example.paymentsapp.repository.PA_Repository;
 import org.springframework.stereotype.Service;
 
@@ -12,8 +13,10 @@ import java.util.*;
 @Service
 public class PA_Service implements PA_Interface{
     private final PA_Repository paRepository;
-    public PA_Service(PA_Repository paRepository) {
+    private final CourseRepository courseRepository;
+    public PA_Service(PA_Repository paRepository, CourseRepository courseRepository) {
         this.paRepository = paRepository;
+        this.courseRepository = courseRepository;
     }
     @Override
     public StudentModel createUser(CreateDto user) {
@@ -41,5 +44,10 @@ public class PA_Service implements PA_Interface{
     public Set<StudentModel> getUserByNumber(String number) {
         List<StudentModel> st=paRepository.findByNumber(number);
         return new HashSet<>(st);
+    }
+
+    @Override
+    public List<StudentModel> findByName(String name) {
+        return paRepository.findByNameContaining(name);
     }
 }

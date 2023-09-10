@@ -15,4 +15,5 @@ public interface PA_Interface {
     StudentModel updateStudent(UpdateDTO updateDTO, Long id);
 
     Set<StudentModel> getUserByNumber(String number);
+    List<StudentModel> findByName(String name);
 }

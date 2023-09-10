@@ -32,4 +32,8 @@ public class PaymentsApp {
     public Set<StudentModel> searchByNumber(@PathVariable String number){
         return paInterface.getUserByNumber(number);
     }
+    @GetMapping("/find/{name}")
+    public List<StudentModel> findStudentsContainingByName(@PathVariable String name){
+        return paInterface.findByName(name);
+    }
 }

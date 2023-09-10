@@ -4,19 +4,14 @@ import com.example.paymentsapp.model.FileDb;
 import com.example.paymentsapp.service.FileDbService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Arrays;
 import java.util.List;
-
 @RestController
 @RequestMapping(path = "/file")
 public class FileOperationController {
     private final FileDbService fileDbService;
-
     public FileOperationController(FileDbService fileDbService) {
         this.fileDbService = fileDbService;
     }
-
     @PostMapping(path = "/upload")
     private FileDb uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
         System.out.println(file.getContentType());

@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface PA_Repository extends JpaRepository<StudentModel,Long> {
     List<StudentModel> findByNumber(String number);
+    List<StudentModel> findByNameContaining(String name);
 }
