@@ -1,5 +1,4 @@
 package com.example.paymentsapp.service;
-
 import com.example.paymentsapp.dto.CreateDto;
 import com.example.paymentsapp.dto.UpdateDTO;
 import com.example.paymentsapp.exceptions.NotFoundException;
@@ -7,16 +6,14 @@ import com.example.paymentsapp.model.StudentModel;
 import com.example.paymentsapp.repository.CourseRepository;
 import com.example.paymentsapp.repository.PA_Repository;
 import org.springframework.stereotype.Service;
-
-import java.util.*;
-
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 @Service
 public class PA_Service implements PA_Interface{
     private final PA_Repository paRepository;
-    private final CourseRepository courseRepository;
-    public PA_Service(PA_Repository paRepository, CourseRepository courseRepository) {
+    public PA_Service(PA_Repository paRepository) {
         this.paRepository = paRepository;
-        this.courseRepository = courseRepository;
     }
     @Override
     public StudentModel createUser(CreateDto user) {
@@ -28,7 +25,6 @@ public class PA_Service implements PA_Interface{
         List<StudentModel> all=paRepository.findAll();
         return new HashSet<>(all);
     }
-
     @Override
     public StudentModel updateStudent(UpdateDTO updateDTO, Long id) {
         final StudentModel st=paRepository.findById(id).
@@ -39,13 +35,11 @@ public class PA_Service implements PA_Interface{
         st.setNumber(updateDTO.getNumber());
         return paRepository.save(st);
     }
-
     @Override
     public Set<StudentModel> getUserByNumber(String number) {
         List<StudentModel> st=paRepository.findByNumber(number);
         return new HashSet<>(st);
     }
-
     @Override
     public List<StudentModel> findByName(String name) {
         return paRepository.findByNameContaining(name);

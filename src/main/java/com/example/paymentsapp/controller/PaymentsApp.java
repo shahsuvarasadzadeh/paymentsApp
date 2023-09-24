@@ -1,14 +1,11 @@
 package com.example.paymentsapp.controller;
-
 import com.example.paymentsapp.dto.CreateDto;
 import com.example.paymentsapp.dto.UpdateDTO;
 import com.example.paymentsapp.model.StudentModel;
 import com.example.paymentsapp.service.PA_Interface;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Set;
-
 @RestController
 @RequestMapping(path = "/api")
 public class PaymentsApp {
