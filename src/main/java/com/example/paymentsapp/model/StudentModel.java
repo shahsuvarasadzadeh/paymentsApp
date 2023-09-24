@@ -1,11 +1,10 @@
 package com.example.paymentsapp.model;
-
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
-@Table(name = "paymentsApp")
+@Table(name = "students")
 @Data
 public class StudentModel {
     @Id
@@ -15,7 +14,7 @@ public class StudentModel {
     private String surname;
     private String email;
     private String number;
-    public StudentModel(String name, String surname, String email,String number){
+    public StudentModel(String name, String surname, String email, String number){
         this.name=name;
         this.surname=surname;
         this.email=email;

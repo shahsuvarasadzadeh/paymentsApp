@@ -1,16 +1,11 @@
 package com.example.paymentsapp.service;
-
-import com.example.paymentsapp.exceptions.NotFoundException;
 import com.example.paymentsapp.model.FileDb;
 import com.example.paymentsapp.repository.FileDBRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class FileDbImpl implements FileDbService {
     private final FileDBRepository fileDBRepository;
@@ -24,7 +19,6 @@ public class FileDbImpl implements FileDbService {
                 file.getBytes());
         return fileDBRepository.save(fileDb);
     }
-
     @Override
     public FileDb getFileById(Long id) {
         return fileDBRepository.findById(id).orElseThrow(()
