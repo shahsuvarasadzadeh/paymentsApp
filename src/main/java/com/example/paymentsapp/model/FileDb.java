@@ -15,7 +15,7 @@ public class FileDb {
     private String name;
     private String type;
     private byte[] data;
-    public FileDb(String name,String type,byte[] data) {
+    public FileDb(String name, String type, byte[] data) {
         this.name = name;
         this.type = type;
         this.data = data;

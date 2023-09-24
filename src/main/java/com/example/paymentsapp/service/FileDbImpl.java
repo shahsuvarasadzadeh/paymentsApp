@@ -21,15 +21,11 @@ public class FileDbImpl implements FileDbService {
     }
     @Override
     public FileDb getFileById(Long id) {
-        Optional<FileDb> fileDbOptional=fileDBRepository.findById(id);
-        if(fileDbOptional.isPresent()){
-            return fileDbOptional.get();
-        }
-        return null;
+        return fileDBRepository.findById(id).orElseThrow(()
+                -> new NotFoundException("Not Found image"));
     }
     @Override
     public List<FileDb> getFileList() {
         return fileDBRepository.findAll();
     }
-
 }
