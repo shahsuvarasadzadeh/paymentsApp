@@ -22,10 +22,10 @@ public class CourseAndStudentImpl implements CourseAndStudentInter {
     public CourseAndStudents saveCourseAndStudent(Long studentId, Long courseId) {
         List<CourseAndStudents> courseName = courseAndStudentRepository.findAllByCourseName(courseRepository.findById(courseId).orElseThrow().getName());
         List<Long> studentsId = courseName.stream().map(CourseAndStudents::getStudentId).collect(Collectors.toList());
-        Long sum = 0L;
+        Long sum = 1L;
         if (!studentsId.contains(studentId)) {
             for (int i = 0; i < studentsId.size(); i++) {
-                sum = sum + 1;
+                sum +=1;
             }
             updateStudentCount(courseId, sum);
             return courseAndStudentRepository.save(new CourseAndStudents(paRepository
