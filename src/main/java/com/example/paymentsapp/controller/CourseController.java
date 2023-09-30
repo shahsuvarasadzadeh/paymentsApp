@@ -47,4 +47,8 @@ public class CourseController {
     public CourseModel updateStudentCountInCourse(Long id,Long sum){
         return courseAndStudentInter.updateStudentCount(id,sum);
     }
+    @GetMapping(path = "/searchByName/{name}")
+    public CourseModel searchByName(@PathVariable String name){
+            return courseInter.searchByName(name);
+    }
 }

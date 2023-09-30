@@ -6,4 +6,6 @@ public interface CourseInter {
     CourseModel createCourse(CreateCourseDTO courseDTO);
     List<CourseModel> allCourse();
     CourseModel updateCourse(Long id,CreateCourseDTO courseDTO);
+
+    CourseModel searchByName(String name);
 }

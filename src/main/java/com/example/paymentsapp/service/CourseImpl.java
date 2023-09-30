@@ -32,4 +32,9 @@ public class CourseImpl implements CourseInter {
         courseModel.setName(courseDTO.getName());
         return courseRepository.save(courseModel);
     }
+
+    @Override
+    public CourseModel searchByName(String name) {
+        return courseRepository.findByName(name);
+    }
 }
