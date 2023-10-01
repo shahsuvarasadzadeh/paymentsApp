@@ -17,12 +17,14 @@ public class PaymentModel {
     private LocalDate checkDate;
     private Long monthOfCourse;
     private String course;
+    private String student;
     private String cardholder;
-    public PaymentModel(Long amount, LocalDate checkDate, Long monthOfCourse, String course, String cardholder) {
+    public PaymentModel(Long amount, LocalDate checkDate, Long monthOfCourse, String course,String student, String cardholder) {
         this.amount = amount;
         this.checkDate = checkDate;
         this.monthOfCourse = monthOfCourse;
         this.course = course;
+        this.student=student;
         this.cardholder = cardholder;
     }
 }

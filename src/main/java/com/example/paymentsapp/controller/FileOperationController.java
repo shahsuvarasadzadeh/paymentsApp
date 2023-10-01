@@ -13,10 +13,6 @@ public class FileOperationController {
     }
     @PostMapping(path = "/upload")
     private FileDb uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
-        System.out.println(file.getContentType());
-        System.out.println(file.getName());
-        System.out.println(file.getOriginalFilename());
-        System.out.println(file.getBytes());
         return fileDbService.store(file);
     }
     @GetMapping(path = "get/{id}")
